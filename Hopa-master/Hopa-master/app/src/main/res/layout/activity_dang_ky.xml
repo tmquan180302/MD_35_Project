@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/_20sdp"
+    tools:context=".ui.user.SignUpActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_marginBottom="@dimen/_40sdp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create Your Account !"
+            android:fontFamily="@font/lato_bold"
+            android:textStyle="bold"
+            android:textSize="@dimen/_25ssp" />
+
+
+    </LinearLayout>
+
+
+        <EditText
+            android:id="@+id/edtFullName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/vien"
+            android:hint="User Name"
+            android:fontFamily="@font/lato_regular"
+            android:padding="@dimen/_10sdp"
+            android:textSize="@dimen/_13sdp"
+            android:maxLines="1"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            >
+        </EditText>
+
+
+    <EditText
+        android:id="@+id/edtEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:textSize="@dimen/_13sdp"
+        android:fontFamily="@font/lato_regular"
+        android:background="@drawable/vien"
+        android:padding="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:inputType="textEmailAddress"
+        android:imeOptions="actionNext"
+        />
+    <EditText
+        android:id="@+id/edtPass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/vien"
+        android:hint="Pass Word"
+        android:textSize="@dimen/_13sdp"
+        android:padding="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:imeOptions="actionNext"
+        android:inputType="textPassword"
+        />
+
+    <EditText
+        android:id="@+id/edtPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/vien"
+        android:hint="Phone Number"
+        android:textSize="@dimen/_13sdp"
+        android:fontFamily="@font/lato_regular"
+        android:padding="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:imeOptions="actionDone"
+        android:inputType="number"
+        />
+
+    <Button
+        android:id="@+id/btnDangKy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:text="Sign Up"
+        android:fontFamily="@font/lato_regular"
+        android:textSize="@dimen/_15ssp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="or Sign Up with"
+            android:fontFamily="@font/lato_regular"
+            android:textSize="@dimen/_13ssp" />
+
+        <ImageView
+            android:id="@+id/ivGoogle"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:src="@drawable/logogoogle"
+            android:layout_marginTop="@dimen/_10sdp"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Already had an account? "
+            android:fontFamily="@font/lato_regular"
+            android:textSize="@dimen/_10ssp"
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:id="@+id/tvSignIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign in"
+            android:fontFamily="@font/lato_regular"
+            android:textColor="#229CEF"
+            android:textSize="@dimen/_10ssp"
+            android:layout_marginLeft="@dimen/_5sdp"
+            />
+    </LinearLayout>
+
+</LinearLayout>

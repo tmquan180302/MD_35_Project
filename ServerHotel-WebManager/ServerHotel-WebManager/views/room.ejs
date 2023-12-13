@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- room.ejs -->
+
+    <!-- room.ejs -->
+
+    <%- include('navBar') %>
+
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Description</th>
+                            <th>Status</th>
+                            <th>Convenience</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% rooms.forEach((room)=> { %>
+                            <tr>
+                                <td>
+                                    <%= room.type %>
+                                </td>
+                                <td>
+                                    <%= room.price %>
+                                </td>
+                                <td>
+                                    <%= room.description %>
+                                </td>
+                                <td>
+                                    <%= room.isAvailable %>
+                                </td>
+
+
+                                <td>
+                                    <% if (room.convenience && room.convenience.length > 0) { %>
+                                        <ul>
+                                            <% room.convenience.forEach((item) => { %>
+                                                <li><%= item.nameConvenience %></li>
+                                            <% }); %>
+                                        </ul>
+                                    <% } else { %>
+                                        No convenience
+                                    <% } %>
+                                </td>
+
+                                <td> <a href="/admin/room/edit/<%= room._id %>" class="btn btn-warning">Edit</a></td>
+                                <td> <a href="/admin/room/delete/<%= room._id %>" class="btn btn-danger"
+                                        onclick="return confirm('Are you sure you want to delete this room?')">Delete</a>
+                                </td>
+                            </tr>
+
+                            <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <br>
+        <form action="/admin/room/add" method="GET"><button type="submit" class="btn btn-success"> Add Room </button>
+        </form>
+        <br>
+
+
+</body>
+
+</html>

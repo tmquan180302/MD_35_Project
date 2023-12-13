@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- review-form.ejs -->
+
+    <%- include('navBar') %>
+
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h2>
+                    <%= mode==='add' ? 'Add Review' : 'Edit Review' %>
+                </h2>
+                <form action="<%= mode === 'add' ? '/review/add' : '/review/edit/' + review._id %>" method="POST">
+                    <div class="form-group">
+                        <label for="service">Service:</label>
+                        <select class="form-control" id="service" name="service">
+                            <option value="" <%=!review || !review.service ? 'selected' : '' %>></option>
+                            <% services.forEach((service)=> { %>
+                                <option value="<%= service._id %>" <%=review && review.service &&
+                                    review.service.toString()===service._id.toString() ? 'selected' : '' %>><%=
+                                        service.name %>
+                                </option>
+                                <% }); %>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="room">Room:</label>
+                        <select class="form-control" id="room" name="room">
+                            <option value="" <%=!review || !review.room ? 'selected' : '' %>></option>
+                            <% rooms.forEach((room)=> { %>
+                                <option value="<%= room._id %>" <%=review && review.room &&
+                                    review.room.toString()===room._id.toString() ? 'selected' : '' %>><%= room.name %>
+                                </option>
+                                <% }); %>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="user">User:</label>
+                        <select class="form-control" id="user" name="user">
+                            <option value="" <%=!review || !review.user ? 'selected' : '' %>></option>
+                            <% users.forEach((user)=> { %>
+                                <option value="<%= user._id %>" <%=review && review.user &&
+                                    review.user.toString()===user._id.toString() ? 'selected' : '' %>><%= user.userName
+                                        %>
+                                </option>
+                                <% }); %>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="rating">Rating:</label>
+                        <input type="number" class="form-control" id="rating" name="rating"
+                            value="<%= review ? review.rating : '' %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment">Comment:</label>
+                        <textarea class="form-control" id="comment" name="comment"
+                            required><%= review ? review.comment : '' %></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <%= mode==='add' ? 'Add Review' : 'Update Review' %>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+</body>
+
+</html>

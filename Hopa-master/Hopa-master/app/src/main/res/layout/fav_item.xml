@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/favImageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/hotel1"
+        android:scaleType="centerCrop"/>
+
+    <TextView
+        android:id="@+id/favTextView"
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|start"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="150dp"
+        android:textStyle="bold"
+        android:text="Phòng giường đơn"/>
+
+    <TextView
+        android:id="@+id/priceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextAppearance.AppCompat.Title"
+        android:layout_gravity="center|start"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="110dp"
+        android:text="1.000.000đ"
+        android:textStyle="bold"
+        android:textSize="30dp"/>
+
+    <TextView
+        android:id="@+id/nightTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextAppearance.AppCompat.Title"
+        android:layout_gravity="center|start"
+        android:layout_marginStart="130dp"
+        android:layout_marginBottom="75dp"
+        android:text="/1 đêm"/>
+
+    <Button
+        android:id="@+id/favBtn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center|start"
+        android:layout_marginBottom="65dp"
+        android:background="@drawable/bookmark_icon"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+</androidx.cardview.widget.CardView>

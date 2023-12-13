@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- service.ejs -->
+    <!-- service.ejs -->
+
+    <%- include('navBar') %>
+
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% services.forEach((service)=> { %>
+                            <tr>
+                                <td>
+                                    <%= service.name %>
+                                </td>
+                                <td>
+                                    <%= service.price %>
+                                </td>
+                                <td>
+                                    <%= service.description %>
+                                </td>
+                                <td> <a href="/admin/service/edit/<%= service._id %>" class="btn btn-warning">Edit</a></td>
+                                <td> <a href="/admin/service/delete/<%= service._id %>" class="btn btn-danger"
+                                        onclick="return confirm('Are you sure you want to delete this room?')">Delete</a>
+                                </td>
+                            </tr>
+                            <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <br>
+        <form action="/admin/service/add" method="GET"><button type="submit" class="btn btn-success">Add Service </button>
+        </form>
+        <br>
+
+
+</body>
+
+</html>

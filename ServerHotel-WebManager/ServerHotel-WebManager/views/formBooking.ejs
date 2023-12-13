@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- booking-form.ejs -->
+
+    <%- include('navBar') %>
+
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h2>
+                    <%= mode==='add' ? 'Add Booking' : 'Edit Booking' %>
+                </h2>
+                <form action="<%= mode === 'add' ? '/admin/booking/add' : '/admin/booking/edit/' + booking._id %>"
+                    method="POST">
+                    <div class="form-group">
+                        <label for="user">User:</label>
+                        <select class="form-control" id="user" name="user" required>
+                            <% if (booking && booking.user) { %>
+                                <option value="<%= booking.user._id %>" selected>
+                                    <%= booking.user.userName %>
+                                </option>
+                                <% }else { %>
+                                    <option value="null" selected>Select User</option>
+                                    <% } %>
+                                        <% users.forEach((user)=> { %>
+                                            <option value="<%= user._id %>" <%=booking && booking.user &&
+                                                booking.user.toString()===user._id.toString() ? 'selected' : '' %>><%=
+                                                    user.userName %>
+                                            </option>
+                                            <% }); %>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Service:</label>
+                        <select class="form-control" id="service" name="service">
+
+                            <% if (booking && booking.service) { %>
+                                <option value="<%= booking.service._id %>" selected>
+                                    <%= booking.service.name %>
+                                </option>
+                                <% } else { %>
+                                    <option value="null" selected>Select Service</option>
+                                    <% }%>
+                                        <% services.forEach((service)=> { %>
+                                            <option value="<%= service._id %>" <%=booking && booking.service &&
+                                                booking.service.toString()===service._id.toString() ? 'selected' : '' %>
+                                                ><%= service.name %>
+                                            </option>
+                                            <% }); %>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="room">Room:</label>
+                        <select class="form-control" id="room" name="room">
+                            <% if (booking && booking.room) { %>
+                                <option value="<%= booking.room._id %>" selected>
+                                    <%= booking.room.type %>
+                                </option>
+                                <% }else { %>
+                                    <option value="null" selected>Select room</option>
+                                    <% } %>
+                                        <% rooms.forEach((room)=> { %>
+                                            <option value="<%= room._id %>" <%=booking && booking.room &&
+                                                booking.room.toString()===room._id.toString() ? 'selected' : '' %>><%=
+                                                    room.type %>
+                                            </option>
+                                            <% }); %>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="checkInDate">Check-In Date:</label>
+                        <input type="date" class="form-control" id="checkInDate" name="checkInDate"
+                            value="<%= booking ? booking.checkInDate : '' %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="checkOutDate">Check-Out Date:</label>
+                        <input type="date" class="form-control" id="checkOutDate" name="checkOutDate"
+                            value="<%= booking ? booking.checkOutDate : '' %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="note">Note:</label>
+                        <textarea class="form-control" id="note"
+                            name="note"><%= booking ? booking.note : '' %></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="totalPrice">Total Price:</label>
+                        <input type="number" class="form-control" id="totalPrice" name="totalPrice"
+                            value="<%= booking ? booking.totalPrice : '' %>">
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <%= mode==='add' ? 'Add Booking' : 'Update Booking' %>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+</body>
+
+
+<!-- Thêm thư viện jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Lắng nghe sự kiện khi giá trị của dropdown "Room" thay đổi
+        $('#room').on('change', function () {
+            // Lấy giá trị được chọn
+            var selectedRoom = $(this).val();
+
+            // Nếu giá trị được chọn là "null" (tức là "Select room"), bỏ vô hiệu hóa dropdown "Service"
+            if (selectedRoom === "null") {
+                $('#service').prop('disabled', false);
+            } else {
+                // Ngược lại, vô hiệu hóa dropdown "Service"
+                $('#service').prop('disabled', true);
+            }
+        });
+
+        // Lắng nghe sự kiện khi giá trị của dropdown "Service" thay đổi
+        $('#service').on('change', function () {
+            // Lấy giá trị được chọn
+            var selectedService = $(this).val();
+
+            // Nếu giá trị được chọn là "null" (tức là "Select Service"), bỏ vô hiệu hóa dropdown "Room"
+            if (selectedService === "null") {
+                $('#room').prop('disabled', false);
+            } else {
+                // Ngược lại, vô hiệu hóa dropdown "Room"
+                $('#room').prop('disabled', true);
+            }
+        });
+    });
+</script>
+
+
+</html>

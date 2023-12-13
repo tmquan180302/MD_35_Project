@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- service-form.ejs -->
+
+    <%- include('navBar') %>
+
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h2>
+                    <%= mode==='add' ? 'Add Service' : 'Edit Service' %>
+                </h2>
+                <form action="<%= mode === 'add' ? '/admin/service/add' : '/admin/service/edit/' + (service ? service._id : '') %>"
+                    method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="name">Service Name:</label>
+                        <input type="text" class="form-control" id="name" name="name"
+                            value="<%= service ? service.name : '' %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Service Price:</label>
+                        <input type="number" class="form-control" id="price" name="price"
+                            value="<%= service ? service.price : '' %>">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description:</label>
+                        <textarea class="form-control" id="description"
+                            name="description"><%= service ? service.description : '' %></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Service Images:</label>
+                        <input type="file" name="image" accept="image/*" multiple>
+                        <% if (service && service.image) { %>
+                            <% service.image.forEach(image=> { %>
+                                <img src="<%= image %>" alt="Service Image" style="max-width: 100px;">
+                                <% }); %>
+                                    <% } %>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <%= mode==='add' ? 'Add Service' : 'Update Service' %>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+</body>
+
+</html>

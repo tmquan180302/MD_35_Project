@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- booking.ejs -->
+
+    <!-- booking.ejs -->
+
+    <%- include('navBar') %>
+
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>InDate</th>
+                            <th>OutDate</th>
+                            <th>Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% bookings.forEach((booking)=> { %>
+                            <tr>
+                                <td>
+                                    <%= booking.user.fullName %>
+                                </td>
+                                <td>
+                                    <%= booking.checkInDate %>
+                                </td>
+                                <td>
+                                    <%= booking.checkOutDate %>
+                                </td>
+                                <td>
+                                    <% if (booking.room) { %>
+                                        <%= booking.room.type %>
+                                    <% } else if (booking.service) { %>
+                                        <%= booking.service.name %>
+                                    <% } else { %>
+                                        N/A
+                                    <% } %>
+                                </td>
+                                </td>
+
+                                <td> <a href="/admin/booking/edit/<%= booking._id %>" class="btn btn-warning">Edit</a></td>
+                                <td> <a href="/admin/booking/delete/<%= booking._id %>" class="btn btn-danger"
+                                        onclick="return confirm('Are you sure you want to delete this room?')">Delete</a>
+                                </td>
+                            </tr>
+                            <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <br>
+        <form action="/admin/booking/add" method="GET"><button type="submit" class="btn btn-success"> Add Booking </button>
+        </form>
+        <br>
+
+</body>
+
+</html>

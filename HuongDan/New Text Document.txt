@@ -1,0 +1,12 @@
+-Link Zalo Pay 
+==>https://beta-docs.zalopay.vn/docs/developer-tools/test-instructions/test-wallets/
+Mã OTP : 111111
+
+-https://docs.zalopay.vn/v1/start/
+==> Nạp tiền vào tài khoản 
+
+///////////////
+
++ Trong Project
+- Thay đổi đường dẫn đến file .arr(libs) trong dependencies
+==>ctrl+alt+shift+S

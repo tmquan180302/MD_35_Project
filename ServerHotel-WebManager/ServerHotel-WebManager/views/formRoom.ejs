@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- room-form.ejs -->
+
+    <%- include('navBar') %>
+
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h2>
+                    <%= mode==='add' ? 'Add Room' : 'Edit Room' %>
+                </h2>
+                <form action="<%= mode === 'add' ? '/admin/room/add' : '/admin/room/edit/' + (room ? room._id : '') %>"
+                    method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="type">Room Type:</label>
+                        <input type="text" class="form-control" id="type" name="type"
+                            value="<%= room ? room.type : '' %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Room Price:</label>
+                        <input type="number" class="form-control" id="price" name="price"
+                            value="<%= room ? room.price : '' %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description:</label>
+                        <textarea class="form-control" id="description"
+                            name="description"><%= room ? room.description : '' %></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="convenience">Convenience:</label>
+                        <div class="convenience-container">
+                            <% if (room && room.convenience) { %>
+                                <% room.convenience.forEach((convenience, index)=> { %>
+                                    <div class="convenience-item">
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" name="nameConvenience[]"
+                                                value="<%= convenience.nameConvenience %>"
+                                                placeholder="Convenience Name">
+                                            <input type="text" class="form-control" name="imageConvenience[]"
+                                                value="<%= convenience.imageConvenience %>"
+                                                placeholder="Convenience Image URL">
+                                        </div>
+                                        <br>
+                                        <% if (index> 0) { %>
+                                            <button type="button"
+                                                class="btn btn-danger remove-convenience">Remove</button>
+                                            <% } %>
+                                    </div>
+                                    <% }); %>
+                                        <% } %>
+                        </div>
+                        <br>
+                        <button type="button" class="btn btn-success" id="add-convenience">Add
+                            Convenience</button>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="isAvailable">Is Available:</label>
+                        <select class="form-control" id="isAvailable" name="isAvailable">
+                            <option value="true" <%=room && room.isAvailable ? 'selected' : '' %>>Yes</option>
+                            <option value="false" <%=room && !room.isAvailable ? 'selected' : '' %>>No</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Room Images:</label>
+                        <input type="file" name="image" accept="image/*" multiple>
+                        <% if (room && room.image) { %>
+                            <% room.image.forEach(image=> { %>
+                                <img src="<%= image %>" alt="Room Image" style="max-width: 100px;">
+                                <% }); %>
+                                    <% } %>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <%= mode==='add' ? 'Add Room' : 'Update Room' %>
+                    </button>
+                </form>
+            </div>
+
+
+        </div>
+
+
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const addBtn = document.getElementById('add-convenience');
+                const container = document.querySelector('.convenience-container');
+
+                addBtn.addEventListener('click', function () {
+                    const newItem = document.createElement('div');
+                    newItem.classList.add('convenience-item');
+                    newItem.innerHTML = `
+                <div class="col-md-6">
+                    <input type="text" class="form-control" name="nameConvenience[]" placeholder="Convenience Name">
+                    <input type="text" class="form-control" name="imageConvenience[]" placeholder="Convenience Image URL">
+                </div>
+                <br>
+                <button type="button" class="btn btn-danger remove-convenience">Remove</button>
+            `;
+
+                    container.appendChild(newItem);
+                });
+
+                container.addEventListener('click', function (event) {
+                    if (event.target.classList.contains('remove-convenience')) {
+                        event.target.closest('.convenience-item').remove();
+                    }
+                });
+            });
+        </script>
+
+
+</body>
+
+</html>

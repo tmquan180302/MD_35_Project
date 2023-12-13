@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "48688014159",
+    "firebase_url": "https://hopa-e694a-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "hopa-e694a",
+    "storage_bucket": "hopa-e694a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:48688014159:android:504976ce25abd407eb9b3a",
+        "android_client_info": {
+          "package_name": "com.poly.hopa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "48688014159-cq7hsb8drqod8hv15r0ofifsa79djanj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.poly.hopa",
+            "certificate_hash": "06067f7af17d206273e024fd469a86843763f445"
+          }
+        },
+        {
+          "client_id": "48688014159-2pg5rfujnrlda2qbka328353ttlvtrr8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2T-Q-y-m7LhAsCGiPkdscpjLGXIYR9C4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "48688014159-2pg5rfujnrlda2qbka328353ttlvtrr8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
